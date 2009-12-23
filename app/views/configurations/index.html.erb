@@ -1,0 +1,19 @@
+<% title "Configurations" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+  </tr>
+  <% for configuration in @configurations %>
+    <tr>
+      <td><%=h configuration.name %></td>
+      <td><%=h configuration.value %></td>
+      <td><%= link_to "Show", configuration %></td>
+      <td><%= link_to "Edit", edit_configuration_path(configuration) %></td>
+      <td><%= link_to "Destroy", configuration, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Configuration", new_configuration_path %></p>

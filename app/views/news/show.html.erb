@@ -1,0 +1,16 @@
+<% title "News" %>
+
+<p>
+  <strong>Title:</strong>
+  <%=h @news.title %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%=h @news.content %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_news_instance_path(@news) %> |
+  <%= link_to "Destroy", news_instance_path(@news), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", news_path %>
+</p>

@@ -1,0 +1,16 @@
+<% title "Configuration" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @configuration.name %>
+</p>
+<p>
+  <strong>Value:</strong>
+  <%=h @configuration.value %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_configuration_path(@configuration) %> |
+  <%= link_to "Destroy", @configuration, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", configurations_path %>
+</p>

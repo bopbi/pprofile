@@ -1,0 +1,972 @@
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateImages (20091223075803)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091223075803')[0m
+Migrating to CreateNews (20091223075849)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "news" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091223075849')[0m
+Migrating to CreateUsers (20091223080028)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091223080028')[0m
+Migrating to CreateServices (20091223080336)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "services" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091223080336')[0m
+Migrating to AddAttachmentsPhotoToImage (20091223080433)
+  [4;36;1mSQL (1.1ms)[0m   [0;1mALTER TABLE "images" ADD "photo_file_name" varchar(255)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mALTER TABLE "images" ADD "photo_content_type" varchar(255)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mALTER TABLE "images" ADD "photo_file_size" integer[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mALTER TABLE "images" ADD "photo_updated_at" datetime[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091223080433')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("images")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("news")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("services")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateImages (20091223075803)
+Migrating to CreateNews (20091223075849)
+Migrating to CreateUsers (20091223080028)
+Migrating to CreateServices (20091223080336)
+Migrating to AddAttachmentsPhotoToImage (20091223080433)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("images")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("news")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("services")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mUser Delete all (1.1ms)[0m   [0;1mDELETE FROM "users" WHERE 1=1[0m
+WARNING: Can't mass-assign these protected attributes: password_confirmation
+  [4;36;1mUser Delete all (0.9ms)[0m   [0;1mDELETE FROM "users" WHERE 1=1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."username") = 'root') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '49479f0411cfc598cb2921d6625076980384659bd1d76ba0e5db4e1191561f1fdff02b0f45f6bc2ada3df14a390ce55dd510cfaa921b6c2cac0797481717eea8') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO "users" ("created_at", "crypted_password", "updated_at", "username", "password_salt", "persistence_token") VALUES('2009-12-23 08:11:57', '08df0e9024184f3092b713030a919d1a47df078059b10cb2703265e496d1aa6948b26c0a0a143c8a582fc19f65a713ad069b6a11621406136864a5b83a19e5da', '2009-12-23 08:11:57', 'root', 'gEy7gvO0H8aPvxv7fJwV', '49479f0411cfc598cb2921d6625076980384659bd1d76ba0e5db4e1191561f1fdff02b0f45f6bc2ada3df14a390ce55dd510cfaa921b6c2cac0797481717eea8')[0m
+  [4;36;1mConfiguration Delete all (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: configurations: DELETE FROM "configurations" WHERE 1=1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateImages (20091223075803)
+Migrating to CreateNews (20091223075849)
+Migrating to CreateUsers (20091223080028)
+Migrating to CreateServices (20091223080336)
+Migrating to AddAttachmentsPhotoToImage (20091223080433)
+Migrating to CreateConfigurations (20091223080957)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "configurations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "value" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091223080957')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("configurations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("images")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("news")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("services")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;36;1mUser Delete all (1.9ms)[0m   [0;1mDELETE FROM "users" WHERE 1=1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."username") = 'root') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '4b4576425bff1df34ab019ffc94a1712c283dc5ceb62d68a7be7cd8e5ca7ad1e69252c7f57976b3a930cf098fff326a0452fe350de6811e2a063d2f549d27a3e') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO "users" ("created_at", "crypted_password", "updated_at", "username", "password_salt", "persistence_token") VALUES('2009-12-23 08:12:29', '76afc00b1bbf2363c1323eff905c33c4589e779e836e15018e299b4c6a1b46fdf947f4cf8d767dc0e06c7b3fc2f89245188231eff74b4f8d7d1dd75c4f9cb6fc', '2009-12-23 08:12:29', 'root', 'Jtf2dBqKRPKBFWx2790l', '4b4576425bff1df34ab019ffc94a1712c283dc5ceb62d68a7be7cd8e5ca7ad1e69252c7f57976b3a930cf098fff326a0452fe350de6811e2a063d2f549d27a3e')[0m
+  [4;36;1mConfiguration Delete all (1.4ms)[0m   [0;1mDELETE FROM "configurations" WHERE 1=1[0m
+  [4;35;1mConfiguration Create (0.4ms)[0m   [0mINSERT INTO "configurations" ("name", "created_at", "updated_at", "value") VALUES('email', '2009-12-23 08:12:29', '2009-12-23 08:12:29', 'bobby@papatong.com')[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:16:58) [GET]
+Rendering template within layouts/application
+Rendering home/index
+Completed in 31ms (View: 24, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:17:28) [GET]
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (45.1ms)
+Completed in 80ms (View: 73, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-23 15:17:29) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/reset.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-23 15:17:29) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/text.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-23 15:17:29) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/960.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-23 15:17:29) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/site.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:18:05) [GET]
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:18:06) [GET]
+  [4;36;1mNews Load (0.6ms)[0m   [0;1mSELECT * FROM "news" [0m
+Rendering template within layouts/application
+Rendering news/index
+Rendered navigations/_link (2.0ms)
+Completed in 33ms (View: 19, DB: 1) | 200 OK [http://localhost/news]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:18:07) [GET]
+  [4;35;1mImage Load (0.5ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/application
+Rendering images/index
+Rendered navigations/_link (2.0ms)
+Completed in 32ms (View: 18, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 15:18:08) [GET]
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (2.0ms)
+Completed in 27ms (View: 19, DB: 0) | 200 OK [http://localhost/contact]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:19:05) [GET]
+
+NameError (undefined local variable or method `current_user' for #<NewsController:0x1032a1a30>):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:155:in `current_ability'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:179:in `cannot?'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (177.9ms)
+Rendered rescues/_request_and_response (2.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:19:08) [GET]
+
+NameError (undefined local variable or method `current_user' for #<ImagesController:0x1034c6090>):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:155:in `current_ability'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:179:in `cannot?'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (80.6ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 15:19:11) [GET]
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/contact]
+
+
+Processing AboutController#index (for 127.0.0.1 at 2009-12-23 15:19:12) [GET]
+Rendering template within layouts/application
+Rendering about/index
+Rendered navigations/_link (2.0ms)
+Completed in 24ms (View: 17, DB: 0) | 200 OK [http://localhost/about]
+
+
+Processing ServicesController#index (for 127.0.0.1 at 2009-12-23 15:19:13) [GET]
+
+NameError (undefined local variable or method `current_user' for #<ServicesController:0x1035163d8>):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:155:in `current_ability'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:179:in `cannot?'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (79.2ms)
+Rendered rescues/_request_and_response (2.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 15:19:16) [GET]
+
+NameError (undefined local variable or method `current_user' for #<ConfigurationsController:0x1031c19d0>):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:155:in `current_ability'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:179:in `cannot?'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (173.7ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-12-23 15:19:23) [GET]
+
+NameError (undefined local variable or method `current_user' for #<UsersController:0x10348e640>):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:155:in `current_ability'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:179:in `cannot?'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (80.1ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing AboutController#index (for 127.0.0.1 at 2009-12-23 15:21:24) [GET]
+Rendering template within layouts/application
+Rendering about/index
+Rendered navigations/_link (2.0ms)
+Completed in 102ms (View: 96, DB: 0) | 200 OK [http://localhost/about]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:21:26) [GET]
+
+NameError (undefined local variable or method `current_user' for #<ImagesController:0x103599e68>):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:155:in `current_ability'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:179:in `cannot?'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (75.9ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:22:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+
+CanCan::AccessDenied (You are unable to access this page.):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:143:in `unauthorized!'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (166.9ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:22:26) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+
+CanCan::AccessDenied (You are unable to access this page.):
+  cancan (1.0.1) lib/cancan/controller_additions.rb:143:in `unauthorized!'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:27:in `authorize_resource'
+  cancan (1.0.1) lib/cancan/resource_authorization.rb:13:in `load_and_authorize_resource'
+  cancan (1.0.1) lib/cancan/controller_additions.rb:15:in `load_and_authorize_resource'
+
+Rendered rescues/_trace (78.8ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 15:22:42) [GET]
+  Parameters: {"action"=>"index", "controller"=>"contact"}
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/contact]
+
+
+Processing AboutController#index (for 127.0.0.1 at 2009-12-23 15:22:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"about"}
+Rendering template within layouts/application
+Rendering about/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/about]
+
+
+Processing ServicesController#index (for 127.0.0.1 at 2009-12-23 15:22:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"services"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:22:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.1ms)
+Completed in 14ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 15:22:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:22:46) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 15ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 15:22:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:22:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 15ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-12-23 15:22:49) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:22:49) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:22:50) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:22:50) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 13ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:23:00) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:23:19) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:23:20) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:23:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:23:56) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-23 15:24:04) [GET]
+
+ActionController::RoutingError (No route matches "/session/create" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#index (for 127.0.0.1 at 2009-12-23 15:24:15) [GET]
+  Parameters: {"action"=>"index", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to index. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:24:21) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:26:46) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:26:46) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (31.4ms)
+Completed in 74ms (View: 67, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:26:50) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:27:35) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:27:36) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:27:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-23 15:28:25) [GET]
+
+ActionController::RoutingError (No route matches "/ho" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:28:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (29.1ms)
+Completed in 190ms (View: 184, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:28:40) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:28:40) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.1ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:28:41) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:28:41) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-12-23 15:28:50) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"sessions"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+
+NoMethodError (undefined method `destroyif' for nil:NilClass):
+  app/controllers/sessions_controller.rb:15:in `destroy'
+
+Rendered rescues/_trace (74.0ms)
+Rendered rescues/_request_and_response (2.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-12-23 15:29:13) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"sessions"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 35ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:29:13) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:29:18) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#show (for 127.0.0.1 at 2009-12-23 15:29:36) [GET]
+  Parameters: {"action"=>"show", "id"=>"create", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:32:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to new. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#show (for 127.0.0.1 at 2009-12-23 15:32:59) [GET]
+  Parameters: {"action"=>"show", "id"=>"create", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-23 15:33:15) [GET]
+
+ActionController::RoutingError (No route matches "/session/create" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#show (for 127.0.0.1 at 2009-12-23 15:33:20) [GET]
+  Parameters: {"action"=>"show", "id"=>"create", "controller"=>"sessions"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, current_user, current_user_session, destroy, logged_in?, login_required, and redirect_to_target_or_default):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-12-23 15:33:47) [GET]
+  Parameters: {"action"=>"create", "controller"=>"sessions"}
+
+ActionView::MissingTemplate (Missing template sessions/new.erb in view path app/views):
+  app/controllers/sessions_controller.rb:9:in `create'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#show (for 127.0.0.1 at 2009-12-23 15:34:02) [GET]
+  Parameters: {"action"=>"show", "id"=>"create", "controller"=>"session"}
+
+NameError (uninitialized constant SessionController):
+  
+
+Rendered rescues/_trace (60.3ms)
+Rendered rescues/_request_and_response (2.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 15:36:08) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered navigations/_link (3.8ms)
+Completed in 91ms (View: 61, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-12-23 15:36:14) [POST]
+  Parameters: {"commit"=>"Submit", "session"=>{"username"=>"root", "password"=>"[FILTERED]"}, "action"=>"create", "authenticity_token"=>"9HM1gmK57Ii/NrokvhyAaqQdNwXOfmZ7KY7RfAt40Bw=", "controller"=>"sessions"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".username) = 'root') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 242ms (DB: 1) | 302 Found [http://localhost/sessions]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:36:14) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 106ms (View: 17, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:36:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mNews Load (0.3ms)[0m   [0;1mSELECT * FROM "news" [0m
+Rendering template within layouts/application
+Rendering news/index
+Rendered navigations/_link (2.0ms)
+Completed in 63ms (View: 15, DB: 1) | 200 OK [http://localhost/news]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:36:17) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mImage Load (0.3ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/application
+Rendering images/index
+Rendered navigations/_link (2.0ms)
+Completed in 62ms (View: 14, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 15:36:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"contact"}
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (2.0ms)
+Completed in 116ms (View: 110, DB: 0) | 200 OK [http://localhost/contact]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:36:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mNews Load (0.2ms)[0m   [0;1mSELECT * FROM "news" [0m
+Rendering template within layouts/application
+Rendering news/index
+Rendered navigations/_link (2.0ms)
+Completed in 52ms (View: 5, DB: 1) | 200 OK [http://localhost/news]
+
+
+Processing NewsController#new (for 127.0.0.1 at 2009-12-23 15:36:20) [GET]
+  Parameters: {"action"=>"new", "controller"=>"news"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering news/new
+Rendered news/_form (8.0ms)
+Rendered navigations/_link (1.9ms)
+Completed in 76ms (View: 28, DB: 1) | 200 OK [http://localhost/news/new]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:36:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;35;1mNews Load (0.3ms)[0m   [0mSELECT * FROM "news" [0m
+Rendering template within layouts/application
+Rendering news/index
+Rendered navigations/_link (2.0ms)
+Completed in 148ms (View: 6, DB: 1) | 200 OK [http://localhost/news]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:37:51) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;35;1mNews Load (0.3ms)[0m   [0mSELECT * FROM "news" [0m
+Rendering template within layouts/application
+Rendering news/index
+Rendered navigations/_link (2.0ms)
+Completed in 53ms (View: 6, DB: 1) | 200 OK [http://localhost/news]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:37:52) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;35;1mImage Load (0.3ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/application
+Rendering images/index
+Rendered navigations/_link (1.9ms)
+Completed in 52ms (View: 5, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 15:37:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"contact"}
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/contact]
+
+
+Processing AboutController#index (for 127.0.0.1 at 2009-12-23 15:37:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"about"}
+Rendering template within layouts/application
+Rendering about/index
+Rendered navigations/_link (2.0ms)
+Completed in 23ms (View: 17, DB: 0) | 200 OK [http://localhost/about]
+
+
+Processing AboutController#index (for 127.0.0.1 at 2009-12-23 15:38:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"about"}
+Rendering template within layouts/application
+Rendering about/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/about]
+
+
+Processing ServicesController#index (for 127.0.0.1 at 2009-12-23 15:38:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"services"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;35;1mService Load (0.3ms)[0m   [0mSELECT * FROM "services" [0m
+Rendering template within layouts/application
+Rendering services/index
+Rendered navigations/_link (2.0ms)
+Completed in 60ms (View: 14, DB: 1) | 200 OK [http://localhost/services]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 15:38:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;35;1mConfiguration Load (0.5ms)[0m   [0mSELECT * FROM "configurations" [0m
+Rendering template within layouts/application
+Rendering configurations/index
+Rendered navigations/_link (2.0ms)
+Completed in 169ms (View: 26, DB: 1) | 200 OK [http://localhost/configurations]
+
+
+Processing ConfigurationsController#new (for 127.0.0.1 at 2009-12-23 15:38:10) [GET]
+  Parameters: {"action"=>"new", "controller"=>"configurations"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering configurations/new
+Rendered configurations/_form (8.8ms)
+Rendered navigations/_link (1.9ms)
+Completed in 76ms (View: 28, DB: 1) | 200 OK [http://localhost/configurations/new]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-12-23 15:38:15) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"sessions"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 37ms (DB: 1) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:38:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.2ms)
+Completed in 109ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 15:38:17) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:38:17) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-12-23 15:38:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:38:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ServicesController#index (for 127.0.0.1 at 2009-12-23 15:38:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"services"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:38:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:38:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:38:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 14ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:38:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:38:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing NewsController#index (for 127.0.0.1 at 2009-12-23 15:39:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"news"}
+  [4;36;1mNews Load (0.3ms)[0m   [0;1mSELECT * FROM "news" [0m
+Rendering template within layouts/application
+Rendering news/index
+Rendered navigations/_link (1.9ms)
+Completed in 51ms (View: 5, DB: 0) | 200 OK [http://localhost/news]
+
+
+Processing NewsController#new (for 127.0.0.1 at 2009-12-23 15:39:10) [GET]
+  Parameters: {"action"=>"new", "controller"=>"news"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:39:10) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-12-23 15:39:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"images"}
+  [4;35;1mImage Load (0.3ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/application
+Rendering images/index
+Rendered navigations/_link (2.0ms)
+Completed in 54ms (View: 5, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-12-23 15:39:12) [GET]
+  Parameters: {"action"=>"new", "controller"=>"images"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:39:12) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 15:39:24) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.1ms)
+Completed in 13ms (View: 6, DB: 0) | 200 OK [http://localhost/home]
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 15:39:24) [GET]
+  Parameters: {"action"=>"index", "controller"=>"contact"}
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/contact]
+
+
+Processing AboutController#index (for 127.0.0.1 at 2009-12-23 15:39:25) [GET]
+  Parameters: {"action"=>"index", "controller"=>"about"}
+Rendering template within layouts/application
+Rendering about/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/about]

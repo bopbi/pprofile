@@ -1,19 +1,20 @@
 <% title "News" %>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-  </tr>
+<ul>
   <% for news in @news %>
-    <tr>
-      <td><%=h news.title %></td>
-      <td><%=h news.content %></td>
-      <td><%= link_to "Show", news_instance_path(news) %></td>
-      <td><%= link_to "Edit", edit_news_instance_path(news) %></td>
-      <td><%= link_to "Destroy", news_instance_path(news), :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+   <li>
+      <h5><%=h news.title %></h5>
+      <p><%=h news.content %></p>
+      <p>
+        <% if can? :update, News %>
+        <%= link_to "Edit", edit_news_instance_path(news) %> | 
+        <% end %>
+        <% if can? :delete, News %>
+        <%= link_to "Destroy", news_instance_path(news), :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+      </p>
+   </li>
   <% end %>
-</table>
-
+</ul>
+<% if can? :create, News %>
 <p><%= link_to "New News", new_news_instance_path %></p>
+<% end %>

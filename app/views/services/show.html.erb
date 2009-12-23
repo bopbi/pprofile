@@ -10,7 +10,11 @@
 </p>
 
 <p>
+  <% if can? :create, Service %>
   <%= link_to "Edit", edit_service_path(@service) %> |
+  <% end %>
+  <% if can? :delete, Service %>
   <%= link_to "Destroy", @service, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
   <%= link_to "View All", services_path %>
 </p>

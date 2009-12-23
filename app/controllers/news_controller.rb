@@ -17,7 +17,7 @@ class NewsController < ApplicationController
     @news = News.new(params[:news])
     if @news.save
       flash[:notice] = "Successfully created news."
-      redirect_to @news
+      redirect_to news_instance_path(@news)
     else
       render :action => 'new'
     end
@@ -31,7 +31,7 @@ class NewsController < ApplicationController
     @news = News.find(params[:id])
     if @news.update_attributes(params[:news])
       flash[:notice] = "Successfully updated news."
-      redirect_to @news
+      redirect_to news_instance_path(@news)
     else
       render :action => 'edit'
     end

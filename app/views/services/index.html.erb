@@ -1,19 +1,22 @@
 <% title "Services" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
-  <% for service in @services %>
-    <tr>
-      <td><%=h service.name %></td>
-      <td><%=h service.description %></td>
-      <td><%= link_to "Show", service %></td>
-      <td><%= link_to "Edit", edit_service_path(service) %></td>
-      <td><%= link_to "Destroy", service, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<ul>
+<% for service in @services %>
+  <li>
+      <h3><%=h service.name %></h3>
+      <p><%=h service.description %></p>
+      <p>
+      <% if can? :create, Service %>
+      <%= link_to "Edit", edit_service_path(service) %> | 
+      <% end %>
+      <% if can? :delete, Service %>
+      <%= link_to "Destroy", service, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
+      </p>
+  </li>
+<% end %>
+</ul>
 
+<% if can? :create, Service %>
 <p><%= link_to "New Service", new_service_path %></p>
+<% end %>

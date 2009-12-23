@@ -7,8 +7,8 @@ class Ability
     if user.id != nil
       can :manage, :all
     else
-      can :read, News
-      can :read, Image
+      can :read, [News, Image, Service]
+      can :create, Contact
     end
   end
 end

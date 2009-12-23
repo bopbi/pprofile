@@ -1,17 +1,20 @@
 <% title "Images" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
   <% for image in @images %>
-    <tr>
-      <td><%=h image.name %></td>
-      <td><%= link_to "Show", image %></td>
-      <td><%= link_to "Edit", edit_image_path(image) %></td>
-      <td><%= link_to "Destroy", image, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+    <div>
+      <%=h image.name  %>
+      <%= link_to image_tag(image.photo.url(:medium)), image %>
+      <p>
+      <% if can? :edit, Image %>
+      <%= link_to "Edit", edit_image_path(image) %> | 
+      <% end %>
+      <% if can? :delete, Image %>
+      <%= link_to "Destroy", image, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
+      </p>
+    </div>
   <% end %>
-</table>
 
+<% if can? :create, Image %>
 <p><%= link_to "New Image", new_image_path %></p>
+<% end %>

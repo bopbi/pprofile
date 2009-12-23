@@ -1,12 +1,17 @@
 <% title "Image" %>
 
 <p>
-  <strong>Name:</strong>
-  <%=h @image.name %>
+  <strong><%=h @image.name %></strong>
 </p>
-
 <p>
+  <%= image_tag(@image.photo.url(:original)) %>
+</p>
+<p>
+  <% if can? :update, Image %>
   <%= link_to "Edit", edit_image_path(@image) %> |
+  <% end %>
+  <% if can? :delete, Image %>
   <%= link_to "Destroy", @image, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
   <%= link_to "View All", images_path %>
 </p>

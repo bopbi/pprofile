@@ -970,3 +970,183 @@ Rendering template within layouts/application
 Rendering about/index
 Rendered navigations/_link (2.0ms)
 Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/about]
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 16:09:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"contact"}
+Rendering template within layouts/application
+Rendering contact/index
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined method `value' for #<Class:0x103678848>) on line #5 of app/views/contact/index.html.erb:
+2: <div class="grid_12">
+3: 	<div id="contact">
+4: 		<h1>Contact</h1>
+5: 		<p>if you want to find how i can help your businees, feel free to contact me by email at <%= mail_to @email.value, nil, :replace_at => "_at_", :replace_dot => "_dot_", :class => "email"%> </p>
+6: 		<p>or by filling the contact form below</p>
+7: 	</div>
+8: </div>
+
+    searchlogic (2.3.9) lib/searchlogic/named_scopes/conditions.rb:88:in `method_missing'
+    searchlogic (2.3.9) lib/searchlogic/named_scopes/association_conditions.rb:19:in `method_missing'
+    searchlogic (2.3.9) lib/searchlogic/named_scopes/association_ordering.rb:27:in `method_missing'
+    searchlogic (2.3.9) lib/searchlogic/named_scopes/ordering.rb:30:in `method_missing'
+    searchlogic (2.3.9) lib/searchlogic/named_scopes/or_conditions.rb:24:in `method_missing'
+    /Users/bobbyadiprabowo/.gem/ruby/1.8/gems/mislav-will_paginate-2.3.11/lib/will_paginate/finder.rb:170:in `method_missing'
+    app/views/contact/index.html.erb:5
+
+Rendered rescues/_trace (102.9ms)
+Rendered rescues/_request_and_response (2.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mConfiguration Load (0.4ms)[0m   [0;1mSELECT * FROM "configurations" WHERE (configurations.name = 'email') [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mConfiguration Load (0.5ms)[0m   [0;1mSELECT * FROM "configurations" WHERE (configurations.name = 'email') LIMIT 1[0m
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 16:11:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"contact"}
+  [4;35;1mConfiguration Load (0.4ms)[0m   [0mSELECT * FROM "configurations" WHERE (configurations.name = 'email') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (3.8ms)
+Completed in 159ms (View: 141, DB: 0) | 200 OK [http://localhost/contact]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 16:11:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 16:11:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 23ms (View: 16, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 16:11:26) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered navigations/_link (2.0ms)
+Completed in 132ms (View: 102, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 16:11:31) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+Redirected to http://localhost:3000/
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 16:11:31) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-12-23 16:11:36) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Rendered navigations/_link (2.0ms)
+Completed in 40ms (View: 12, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-12-23 16:11:43) [POST]
+  Parameters: {"commit"=>"Submit", "session"=>{"username"=>"root", "password"=>"[FILTERED]"}, "action"=>"create", "authenticity_token"=>"9HM1gmK57Ii/NrokvhyAaqQdNwXOfmZ7KY7RfAt40Bw=", "controller"=>"sessions"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".username) = 'root') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 324ms (DB: 1) | 302 Found [http://localhost/sessions]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 16:11:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 16:11:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mConfiguration Load (0.5ms)[0m   [0;1mSELECT * FROM "configurations" [0m
+Rendering template within layouts/application
+Rendering configurations/index
+Rendered navigations/_link (2.1ms)
+Completed in 75ms (View: 27, DB: 1) | 200 OK [http://localhost/configurations]
+
+
+Processing ConfigurationsController#edit (for 127.0.0.1 at 2009-12-23 16:11:47) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1", "controller"=>"configurations"}
+  [4;35;1mConfiguration Load (0.5ms)[0m   [0mSELECT * FROM "configurations" WHERE ("configurations"."id" = 1) [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "configurations" WHERE ("configurations"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering configurations/edit
+Rendered configurations/_form (10.3ms)
+Rendered navigations/_link (2.2ms)
+Completed in 180ms (View: 31, DB: 1) | 200 OK [http://localhost/configurations/1/edit]
+
+
+Processing ConfigurationsController#update (for 127.0.0.1 at 2009-12-23 16:11:55) [PUT]
+  Parameters: {"commit"=>"Submit", "action"=>"update", "_method"=>"put", "authenticity_token"=>"9HM1gmK57Ii/NrokvhyAaqQdNwXOfmZ7KY7RfAt40Bw=", "id"=>"1", "controller"=>"configurations", "configuration"=>{"name"=>"email", "value"=>"test@test.com"}}
+  [4;36;1mConfiguration Load (0.4ms)[0m   [0;1mSELECT * FROM "configurations" WHERE ("configurations"."id" = 1) [0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "configurations" WHERE ("configurations"."id" = 1) [0m
+  [4;35;1mConfiguration Update (0.5ms)[0m   [0mUPDATE "configurations" SET "updated_at" = '2009-12-23 09:11:55', "value" = 'test@test.com' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/configurations/1
+Completed in 60ms (DB: 2) | 302 Found [http://localhost/configurations/1]
+
+
+Processing ConfigurationsController#show (for 127.0.0.1 at 2009-12-23 16:11:55) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"configurations"}
+  [4;36;1mConfiguration Load (0.4ms)[0m   [0;1mSELECT * FROM "configurations" WHERE ("configurations"."id" = 1) [0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "configurations" WHERE ("configurations"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering configurations/show
+Rendered navigations/_link (2.0ms)
+Completed in 78ms (View: 23, DB: 1) | 200 OK [http://localhost/configurations/1]
+
+
+Processing ConfigurationsController#index (for 127.0.0.1 at 2009-12-23 16:11:56) [GET]
+  Parameters: {"action"=>"index", "controller"=>"configurations"}
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mConfiguration Load (0.5ms)[0m   [0;1mSELECT * FROM "configurations" [0m
+Rendering template within layouts/application
+Rendering configurations/index
+Rendered navigations/_link (2.0ms)
+Completed in 66ms (View: 16, DB: 1) | 200 OK [http://localhost/configurations]
+
+
+Processing ContactController#index (for 127.0.0.1 at 2009-12-23 16:11:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"contact"}
+  [4;35;1mConfiguration Load (0.5ms)[0m   [0mSELECT * FROM "configurations" WHERE (configurations.name = 'email') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering contact/index
+Rendered navigations/_link (2.0ms)
+Completed in 30ms (View: 12, DB: 1) | 200 OK [http://localhost/contact]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-12-23 16:12:06) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"sessions"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 37ms (DB: 1) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2009-12-23 16:12:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/index
+Rendered navigations/_link (2.0ms)
+Completed in 107ms (View: 6, DB: 0) | 200 OK [http://localhost/]

@@ -9,4 +9,4 @@ User.delete_all
 User.create(:username => 'root', :password => 'root', :password_confirmation => 'root')
 
 Configuration.delete_all
-Configuration.create(:name => 'email', :value => 'bobby@papatong.com')
+Configuration.create(:name => 'email', :value => 'test@test.com')

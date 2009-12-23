@@ -2,7 +2,7 @@
 <ul>
   <% for news in @news %>
    <li>
-      <h5><%=h news.title %></h5>
+      <h5><%= link_to h(news.title), news_instance_path(news)  %></h5>
       <p><%=h news.content %></p>
       <p>
         <% if can? :update, News %>

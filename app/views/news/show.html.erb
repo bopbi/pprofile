@@ -1,16 +1,23 @@
 <% title "News" %>
 
+<h5><%=h @news.title %></h5>
 <p>
-  <strong>Title:</strong>
-  <%=h @news.title %>
-</p>
-<p>
-  <strong>Content:</strong>
   <%=h @news.content %>
 </p>
 
+<% unless @news.first? %>
+  <div class="previous"><%= link_to h('< Older News'), news_instance_path(@news.higher_item) %></div>
+<% end %>
+<% unless @news.last? %>
+  <div class="next"><%= link_to h('Newer News >'), news_instance_path(@news.lower_item) %></div>
+<% end %>
+
 <p>
-  <%= link_to "Edit", edit_news_instance_path(@news) %> |
+  <% if can? :update, News %>
+  <%= link_to "Edit", edit_news_instance_path(@news) %> | 
+  <% end %>
+  <% if can? :delete, News %>
   <%= link_to "Destroy", news_instance_path(@news), :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
   <%= link_to "View All", news_path %>
 </p>

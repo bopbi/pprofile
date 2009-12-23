@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  
+  map.feed "feed", :controller => "news", :format => "atom"
 
   map.login "login", :controller => "sessions", :action => "new"
 

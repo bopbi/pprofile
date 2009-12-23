@@ -2,7 +2,11 @@ class NewsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @news = News.all
+    @news = News.all :order => 'id DESC'
+    respond_to do |format|
+      format.html
+      format.atom { render :layout => false }
+    end
   end
   
   def show

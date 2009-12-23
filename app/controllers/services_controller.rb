@@ -2,7 +2,7 @@ class ServicesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @services = Service.all
+    @services = Service.all :order => 'id DESC'
   end
   
   def show

@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @images = Image.all
+    @images = Image.all :order => 'id DESC'
   end
   
   def show

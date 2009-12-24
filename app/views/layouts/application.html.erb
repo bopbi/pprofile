@@ -5,7 +5,6 @@
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'reset','text','960','site','application' %>
     <%= yield(:head) %>
-    <%= auto_discovery_link_tag(:rss, feed_url) %>
   </head>
   <body>
     <div id="container">

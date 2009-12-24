@@ -1,6 +1,17 @@
 <% title "Edit News" %>
 
-<%= render :partial => 'form' %>
+<% form_for (:news, @news, :url => news_instance_path(@news), :html => {:method => "put"}) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
 
 <p>
   <%= link_to "Show", @news %> |

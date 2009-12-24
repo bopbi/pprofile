@@ -4,11 +4,16 @@
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'reset','text','960','site','application' %>
+    <%= auto_discovery_link_tag(:rss, feed_url) %>
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
-    <%= render 'navigations/link' %>
+    <div id="container" class="container_12">
+      	<% if current_user %>
+		  <%= content_tag :div, "Admin Mode", :id => "admin_notification" %>
+		<% end %>
+      <%= render 'navigations/link' %>
+	  
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <%- end -%>
@@ -18,7 +23,7 @@
       <%- end -%>
       
       <%= yield %>
-
+	<div class="clear"></div>
 	Company &copy; <%= current_year -%>
     </div>
   </body>

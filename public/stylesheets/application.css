@@ -19,7 +19,6 @@ a {
 }
 
 #container {
-  width: 75%;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
@@ -27,12 +26,12 @@ a {
   margin-top: 20px;
 }
 
-#flash_notice, #flash_error {
+#flash_notice, #flash_error, #admin_notification {
   padding: 5px 8px;
   margin: 10px 0;
 }
 
-#flash_notice {
+#flash_notice, #admin_notification {
   background-color: #CFC;
   border: solid 1px #6C6;
 }

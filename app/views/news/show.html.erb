@@ -6,10 +6,10 @@
 </p>
 
 <% unless @news.first? %>
-  <div class="previous"><%= link_to h('< Older News'), news_instance_path(@news.higher_item) %></div>
+  <div class="previous"><%= link_to h('< Older News'), news_instance_path(@news.lower_item) %></div>
 <% end %>
 <% unless @news.last? %>
-  <div class="next"><%= link_to h('Newer News >'), news_instance_path(@news.lower_item) %></div>
+  <div class="next"><%= link_to h('Newer News >'), news_instance_path(@news.higher_item) %></div>
 <% end %>
 
 <p>

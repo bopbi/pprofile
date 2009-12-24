@@ -3,9 +3,22 @@
 a Simple Company Profile Ruby on Rails Application
 
 gem dependency :
-mislav-will_paginate
-authlogic
-cancan
+mislav-will_paginate ==> pagination
+authlogic ==> authentication
+cancan ==> role authentication
 
 plugin dependency :
-paperclip
+paperclip ==> file upload
+
+===================================
+
+to login as Admin
+
+http://localhost:3000/login
+username : root
+password : root
+
+
+===================================
+
+Bobby Adi Prabowo, Papatong.com, Bobbyprabowo.wordpress.com

@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Sorry, you are not allowed to access that page."
-    redirect_to root_url
+    render :template => "errors/error404", :status => "404"
   end
 end

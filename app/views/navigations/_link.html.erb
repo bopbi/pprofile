@@ -5,10 +5,14 @@
 	<li><%= link_to "Contacts", contacts_url %></li>
 	<li><%= link_to "About", about_url %></li>
 	<li><%= link_to "Services", services_path %></li>
-	<% if can? :create, News %>
-	<li><%= link_to "Configuration", configurations_path %></li>
+	<% if can? :read, Configuration %>
+	<li><%= link_to "Configurations", configurations_path %></li>
+	<% end %>
+	<% if can? :read, User %>
 	<li><%= link_to "Users", users_path %></li>
-	<li><%= link_to "Logout", logout_path %></li>
 	<% end %>
 </ul>
 <div class="clear"></div>
+<% if current_user %>
+  <%= content_tag :div, "Administration Mode " + link_to("(Logout)", logout_path) , :id => "admin_notification" %>
+<% end %>

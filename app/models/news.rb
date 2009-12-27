@@ -2,7 +2,7 @@ class News < ActiveRecord::Base
   attr_accessible :title, :content
   
   def lower_item
-   News.id_lt(self.id).first
+   News.id_lt(self.id).last
   end
   
   def higher_item
@@ -10,7 +10,7 @@ class News < ActiveRecord::Base
   end
   
   def first?
-    News.id_lt(self.id).first == nil
+    News.id_lt(self.id).last == nil
   end
   
   def last?

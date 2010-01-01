@@ -8,11 +8,15 @@
     <tr>
       <td><%=h user.username %></td>
       <td><%= link_to "Show", user %></td>
+      <% if can? :update, User %>
       <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <% end %>
+      <% if can? :delete, User %>
       <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
-<% if can? :create, Image %>
+<% if can? :create, User %>
 <p><%= link_to "New User", new_user_path %></p>
 <% end %>

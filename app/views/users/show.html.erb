@@ -10,7 +10,11 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_user_path(@user) %> |
-  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <% if can? :update, User %>
+  <%= link_to "Edit", edit_user_path(@user) %> | 
+  <% end %>
+  <% if can? :delete, User %>
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> | 
+  <% end %>
   <%= link_to "View All", users_path %>
 </p>

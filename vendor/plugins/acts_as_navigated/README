@@ -1,0 +1,30 @@
+ActsAsNavigated
+===============
+
+Navigate / Find the logical higer or lower item of a result set by id, using searchlogic
+
+Dependencies
+============
+gem : searchlogic
+
+
+Example
+=======
+
+In your model, simply call acts_as_ordered without any parameters:
+
+class Picture < ActiveRecord::Base
+  acts_as_navigated
+end
+
+To Navigate in a Show Image REST style use this code :
+
+<% unless @image.first? %>
+  <div class="previous"><%= link_to h('< Older Image'), image_path(@image.lower_item) %></div>
+<% end %>
+<% unless @image.last? %>
+  <div class="next"><%= link_to h('Newer Image >'), image_path(@image.higher_item) %></div>
+<% end %>
+
+
+Copyright (c) 2010 Bobby Prabowo, released under the MIT license

@@ -11,5 +11,4 @@ class Contact < ActiveRecord::Base
   validates_format_of :email, :to_email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   validates_length_of :message, :maximum => 500
   
-  belongs_to :article
 end

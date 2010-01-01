@@ -3,12 +3,13 @@
 a Simple Company Profile Ruby on Rails Application
 
 gem dependency :
-mislav-will_paginate ==> pagination
+will_paginate ==> pagination
 authlogic ==> authentication
 cancan ==> role authentication
 
 plugin dependency :
 paperclip ==> file upload
+acts_as_navigated ==> for navigationg news
 
 ===================================
 

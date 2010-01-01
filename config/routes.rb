@@ -66,4 +66,6 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
+map.connect '*path', :controller => 'application', :action => 'rescue_404' unless ::ActionController::Base.consider_all_requests_local
+
 end

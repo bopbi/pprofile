@@ -3,6 +3,7 @@ class NewsController < ApplicationController
   
   def index
     @news = News.all :order => 'id DESC'
+    @news = @news.paginate :page => params[:page], :per_page => 5
     respond_to do |format|
       format.html
       format.atom { render :layout => false }

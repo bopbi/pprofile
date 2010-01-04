@@ -18,3 +18,4 @@
 <% if can? :create, News %>
 <p><%= link_to "New News", new_news_instance_path %></p>
 <% end %>
+<%= will_paginate @news %>

@@ -3,7 +3,7 @@
   <% for news in @news %>
    <li>
       <h5><%= link_to h(news.title), news_instance_path(news)  %></h5>
-      <%= simple_format_truncate_words(news.content, 50," ... " +link_to( "Detail", news_instance_path(news) ) ) %>
+      <%= raw simple_format_truncate_words(news.content, 50," ... " +link_to( "Detail", news_instance_path(news) ) ) %>
       <p>
         <% if can? :update, News %>
         <%= link_to "Edit", edit_news_instance_path(news) %> | 

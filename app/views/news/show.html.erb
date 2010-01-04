@@ -1,7 +1,7 @@
 <% title "News" %>
 
 <h5><%=h @news.title %></h5>
-<%= simple_format h(@news.content) %>
+<%= raw simple_format(h(@news.content)) %>
 
 <% unless @news.first? %>
   <div class="previous"><%= link_to h('< Older News'), news_instance_path(@news.lower_item) %></div>

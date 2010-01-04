@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(params[:session])
     if @session.save
-      flash[:notice] = "Successfully created session."
+      flash[:notice] = "Successfully Logged In."
       redirect_to root_url
     else
       render :action => 'new'
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   def destroy
     @session = Session.find(params[:id])
     @session.destroy
-    flash[:notice] = "Successfully destroyed session."
+    flash[:notice] = "Successfully Logged Out."
     redirect_to root_url
   end
 end

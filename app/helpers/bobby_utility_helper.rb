@@ -8,7 +8,7 @@ module BobbyUtilityHelper
     return if text == nil
     words = text.split()
     w = words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')
-    simple_format w
+    simple_format h(w)
   end
   
 end
